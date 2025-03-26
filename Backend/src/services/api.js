@@ -1,29 +1,26 @@
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
  
 export const getRandomPokemon = async () => {
-    let randomPokemon = Math.floor(Math.random() * 1025);
-    console.log(`${BASE_URL}${randomPokemon}`)
-    randomPokemon = randomPokemon.toString()
-    const response = await fetch(`${BASE_URL}${randomPokemon}`);
+    let random_pokemon = Math.floor(Math.random() * 1025);
+    console.log(`${BASE_URL}${random_pokemon}`)
+    random_pokemon = random_pokemon.toString()
+    const response = await fetch(`${BASE_URL}${random_pokemon}`);
     const data = await response.json();
 
     return data;
 };
 
 export const getRandomPokemonList = async () => {
-  let pokemonsList = [];
-  for (let i = 0; i < 20; i++){
+  let pokemon_list = [];
+  while (pokemon_list.length < 20) {
+    const data = await getRandomPokemon();
 
-    let randomPokemon = Math.floor(Math.random() * 1025);
-    console.log(`${BASE_URL}${randomPokemon}`)
-    randomPokemon = randomPokemon.toString()
-    const response = await fetch(`${BASE_URL}${randomPokemon}`);
-    const data = await response.json();
-    pokemonsList.push(data)
+    // Check if the Pokémon is already in the list
+    if (!pokemon_list.some(pokemon => pokemon.id === data.id)) {
+      pokemon_list.push(data);
+    }
   }
-  pokemonsList = JSON.parse(JSON.stringify(pokemonsList));
-
-  return pokemonsList;
+  return pokemon_list;
 };
 
 export const getAllPokemonNames = async () => {

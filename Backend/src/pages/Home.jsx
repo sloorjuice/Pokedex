@@ -1,13 +1,13 @@
-import PokeCard from "../components/PokeCard"
-import { useState, useEffect } from "react"
-import { getAllPokemonNames, searchPokemon, getRandomPokemonList } from "../services/api"
-import "../css/Home.css"
+import PokeCard from "../components/PokeCard";
+import { useState, useEffect } from "react";
+import { getAllPokemonNames, searchPokemon, getRandomPokemonList } from "../services/api";
+import "../css/Home.css";
 
 function Home() {
-    const [searchQuery, setSearchQuery] = useState("")
-    const [pokemons, setPokemon] = useState([])  
-    const [error, setError] = useState(null)
-    const [loading, setLoading] = useState(true)
+    const [searchQuery, setSearchQuery] = useState("");
+    const [pokemons, setPokemon] = useState([]);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [allPokemonNames, setAllPokemonNames] = useState([]); // Store all Pokémon names
 
     useEffect(() => {
@@ -37,17 +37,20 @@ function Home() {
         loadRandomPokemon();
         fetchAllPokemonNames();
     }, []);
-    
-    const handleSearch = async (e) => {
-        e.preventDefault();
-        if (!searchQuery.trim()) return;
-        if (loading) return;
-    
+
+    const handleSearch = async (query) => {
+        if (!query.trim()) {
+            // If the search query is empty, reset to random Pokémon
+            const randomPokemon = await getRandomPokemonList();
+            setPokemon(randomPokemon);
+            return;
+        }
+
         setLoading(true);
         try {
             // Filter Pokémon names that start with the search query
             const filteredNames = allPokemonNames.filter((pokemon) =>
-                pokemon.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+                pokemon.name.toLowerCase().startsWith(query.toLowerCase())
             );
 
             // Fetch details for the filtered Pokémon
@@ -65,19 +68,22 @@ function Home() {
         }
     };
 
+    const handleInputChange = (e) => {
+        const query = e.target.value;
+        setSearchQuery(query);
+        handleSearch(query); // Trigger search dynamically as the user types
+    };
+
     return (
         <div className="home">
-            <form onSubmit={handleSearch} className="search-form">
+            <form className="search-form">
                 <input
                     type="text"
-                    placeholder="Search for pokemon..."
+                    placeholder="Search for Pokémon..."
                     className="search-input"
                     value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
+                    onChange={handleInputChange} // Update feed dynamically
                 />
-                <button type="submit" className="search-button">
-                    Search
-                </button>
             </form>
 
             {error && <div className="error-message">{error}</div>}
@@ -86,8 +92,6 @@ function Home() {
                 <div className="loading">Loading...</div>
             ) : (
                 <div className="movies-grid">
-                    {console.log(pokemons)}
-                    {console.log('Pokemons:', pokemons)}
                     {pokemons.map((pokemon) => (
                         <PokeCard pokemon={pokemon} key={pokemon.id} />
                     ))}

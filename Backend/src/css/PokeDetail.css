@@ -1,0 +1,18 @@
+.banner {
+    width: 100vw;
+
+}
+
+.content{
+    position: absolute;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.247);
+    left: 0;
+
+    height: 100%;
+    padding: 10%;
+}
+
+.banner-container {
+    position: relative;
+} 

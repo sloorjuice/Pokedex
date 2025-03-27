@@ -2,6 +2,7 @@ import React from "react";
 import { usePokeContext } from "../context/PokeContext";
 import PokeCard from "../components/PokeCard";
 import "../css/Favorites.css";
+import BackToTop from "../components/BackToTop";
 
 function Favorites() {
   const { favorites } = usePokeContext();
@@ -23,6 +24,7 @@ function Favorites() {
           <PokeCard key={pokemon.id} pokemon={pokemon} />
         ))}
       </div>
+      <BackToTop />
     </div>
   );
 }

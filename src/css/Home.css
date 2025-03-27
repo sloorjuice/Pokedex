@@ -20,7 +20,7 @@
     border-radius: 4px;
     background-color: #333;
     color: white;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Smaller font size for mobile */
   }
   
   .search-input:focus {
@@ -29,7 +29,7 @@
   }
   
   .search-button {
-    padding: 0.75rem 1.5rem;
+    padding: 0.5rem 1rem; /* Adjust button size */
     background-color: #d23b43;
     color: white;
     border-radius: 4px;
@@ -61,3 +61,28 @@
     width: 100%;
     box-sizing: border-box;
   }
+
+  @media (max-width: 768px) {
+    .movies-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .movies-grid {
+        grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+
+    .search-form {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .search-button {
+        width: 100%;
+    }
+}

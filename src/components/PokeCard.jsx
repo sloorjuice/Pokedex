@@ -24,7 +24,11 @@ function PokeCard({ pokemon }) {
         <Link to={`${pokemon.id}`}>
             <div className="movie-card">
                 <div className="movie-poster">
-                    <img src={sprite} alt={formattedName} />
+                    <img
+                        src={sprite}
+                        alt={formattedName}
+                        loading="lazy"
+                    />
                 </div>
                 <div className="movie-overlay">
                     <button className={`favorite-btn ${favorite ? "active" : ''}`} onClick={onFavoriteClick}>♡</button>

@@ -9,14 +9,14 @@ function Home() {
     const [pokemons, setPokemon] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [allPokemonNames, setAllPokemonNames] = useState([]); // Store all Pokémon names
+    const [allPokemonNames, setAllPokemonNames] = useState([]);
+    const [searchHistory, setSearchHistory] = useState([]); // Store recent search queries
 
     useEffect(() => {
         const loadRandomPokemon = async () => {
             try {
                 const randomPokemon = await getRandomPokemonList();
-                setPokemon([...pokemons, ...randomPokemon]); // Correctly update state
-                console.log(randomPokemon);
+                setPokemon([...pokemons, ...randomPokemon]);
             } catch (err) {
                 console.log(err);
                 setError("Failed to load Pokémon...");
@@ -28,7 +28,7 @@ function Home() {
         const fetchAllPokemonNames = async () => {
             try {
                 const names = await getAllPokemonNames();
-                setAllPokemonNames(names); // Store the full list of Pokémon names
+                setAllPokemonNames(names);
             } catch (err) {
                 console.log(err);
                 setError("Failed to fetch Pokémon names...");
@@ -41,20 +41,23 @@ function Home() {
 
     const handleSearch = async (query) => {
         if (!query.trim()) {
-            // If the search query is empty, reset to random Pokémon
             const randomPokemon = await getRandomPokemonList();
             setPokemon(randomPokemon);
             return;
         }
 
         setLoading(true);
+
         try {
-            // Filter Pokémon names that start with the search query
+            setSearchHistory((prevHistory) => {
+                const updatedHistory = [query, ...prevHistory.filter((q) => q !== query)];
+                return updatedHistory.slice(0, 5); // Limit to 5 recent searches
+            });
+
             const filteredNames = allPokemonNames.filter((pokemon) =>
                 pokemon.name.toLowerCase().startsWith(query.toLowerCase())
             );
 
-            // Fetch details for the filtered Pokémon
             const searchResults = await Promise.all(
                 filteredNames.map((pokemon) => fetch(pokemon.url).then((res) => res.json()))
             );
@@ -72,7 +75,7 @@ function Home() {
     const handleInputChange = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
-        handleSearch(query); // Trigger search dynamically as the user types
+        handleSearch(query);
     };
 
     return (
@@ -83,9 +86,20 @@ function Home() {
                     placeholder="Search for Pokémon..."
                     className="search-input"
                     value={searchQuery}
-                    onChange={handleInputChange} // Update feed dynamically
+                    onChange={handleInputChange}
                 />
             </form>
+
+            <div className="search-history">
+                <h4>Recent Searches</h4>
+                <ul>
+                    {searchHistory.map((query, index) => (
+                        <li key={index} onClick={() => handleSearch(query)}>
+                            {query}
+                        </li>
+                    ))}
+                </ul>
+            </div>
 
             {error && <div className="error-message">{error}</div>}
 

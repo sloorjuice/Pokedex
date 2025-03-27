@@ -86,3 +86,39 @@
         width: 100%;
     }
 }
+
+.search-history {
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.search-history h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+    color: #333;
+}
+
+.search-history ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search-history li {
+    padding: 0.5rem;
+    cursor: pointer;
+    color: #007bff;
+    border-bottom: 1px solid #ddd;
+    transition: background-color 0.2s;
+}
+
+.search-history li:last-child {
+    border-bottom: none;
+}
+
+.search-history li:hover {
+    background-color: #f0f0f0;
+}

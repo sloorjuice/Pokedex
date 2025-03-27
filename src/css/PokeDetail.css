@@ -1,18 +1,68 @@
-.banner {
-    width: 100vw;
-
-}
-
-.content{
-    position: absolute;
-    top: 0;
-    background-color: rgba(0, 0, 0, 0.247);
-    left: 0;
-
-    height: 100%;
-    padding: 10%;
-}
-
+/* Container for the entire Pokémon detail page */
 .banner-container {
     position: relative;
-} 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    background-color: #f7f7f7;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+/* Pokémon image styling */
+.banner {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.5rem;
+}
+
+/* Content container for Pokémon details */
+.content {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+/* Pokémon name styling */
+.content h1 {
+    font-size: 2.5rem;
+    color: #333;
+    text-transform: capitalize;
+    margin-bottom: 1rem;
+}
+
+/* Additional Pokémon details (e.g., types, stats) */
+.content p {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 0.5rem 0;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .banner-container {
+        padding: 1rem;
+    }
+
+    .banner {
+        max-width: 200px;
+    }
+
+    .content h1 {
+        font-size: 2rem;
+    }
+
+    .content p {
+        font-size: 1rem;
+    }
+}

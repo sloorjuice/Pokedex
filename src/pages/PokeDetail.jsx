@@ -42,6 +42,9 @@ function PokemonDetail() {
                     />
                     <div className="content">
                         <h1>{pokemon.name}</h1>
+                        <p>Type: {pokemon.types.map((type) => type.type.name).join(", ")}</p>
+                        <p>Height: {pokemon.height / 10} m</p>
+                        <p>Weight: {pokemon.weight / 10} kg</p>
                     </div>
                 </div>
             ) : (

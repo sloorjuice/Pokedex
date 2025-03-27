@@ -2,7 +2,7 @@
     position: fixed;
     bottom: 1rem; /* Distance from the bottom of the screen */
     left: 1rem; /* Distance from the left of the screen */
-    background-color: #d23b43;
+    background-color: #000000;
     color: white;
     border: none;
     border-radius: 50%;
@@ -13,10 +13,15 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     transition: opacity 0.3s ease-in-out;
+
+    /* Center the arrow */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .back-to-top:hover {
-    background-color: #c22e35;
+    background-color: #7a2c30;
 }
 
 .back-to-top:active {

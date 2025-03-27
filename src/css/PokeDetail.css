@@ -1,3 +1,8 @@
+* {
+    user-select: none; /* Prevent text selection */
+    cursor: default; /* Ensure the cursor doesn't change to text-editing mode */
+}
+
 /* Container for the entire Pokémon detail page */
 .banner-container {
     position: relative;
@@ -92,3 +97,4 @@
         font-size: 1rem;
     }
 }
+

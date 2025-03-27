@@ -1,3 +1,8 @@
+* {
+    user-select: none; /* Prevent text selection */
+    cursor: default; /* Ensure the cursor doesn't change to text-editing mode */
+}
+
 .movie-card {
     position: relative;
     border-radius: 8px;

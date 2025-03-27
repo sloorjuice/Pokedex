@@ -1,3 +1,8 @@
+* {
+    user-select: none; /* Prevent text selection */
+    cursor: default; /* Ensure the cursor doesn't change to text-editing mode */
+}
+
 .home {
     padding: 2rem 0;
     width: 100%;
@@ -93,3 +98,4 @@
     color: #ffffff;
     margin: 2rem 0;
 }
+

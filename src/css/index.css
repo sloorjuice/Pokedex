@@ -17,6 +17,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none; /* Prevent text selection */
+    cursor: default; /* Ensure the cursor doesn't change to text-editing mode */
   }
   
   html, body {

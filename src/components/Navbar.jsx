@@ -6,7 +6,7 @@ function Navbar() {
         <nav className="navbar">
             <div className="navbar-brand">
                 <img src="/logo.png" alt="Logo" />
-                <Link to="/">Pokedex</Link>
+                <Link to="/">Pokedex Unlimited</Link>
             </div>
             <div className="navbar-links">
                 <Link to="/">Home</Link>

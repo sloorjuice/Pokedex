@@ -5,7 +5,8 @@ import { Routes, Route} from 'react-router-dom';
 import Favorites from './pages/Favorites';
 import PokemonDetail from './pages/PokeDetail.jsx';
 import { PokeProvider } from './context/PokeContext';
- 
+import All from "./pages/All.jsx";
+
 function App() {
   return(
     <PokeProvider>
@@ -13,15 +14,13 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/favorites' element={<Favorites/>}></Route>
+        <Route path='/all' element={<All />} /> 
         <Route path='pokemon' element={<PokemonDetail />}>
           <Route path=':pokemonID' element={<PokemonDetail/>}></Route>
         </Route>
       </Routes>
     </PokeProvider>
- 
   )
 }
- 
- 
- 
+
 export default App

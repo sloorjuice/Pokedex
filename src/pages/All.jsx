@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../css/All.css";
 import PokeCard from "../components/PokeCard";
+import BackToTop from "../components/BackToTop";
 
 function AZ() {
     const [pokemonList, setPokemonList] = useState([]);
@@ -95,6 +96,8 @@ function AZ() {
                     <PokeCard key={pokemon.id} pokemon={pokemon} />
                 ))}
             </div>
+
+            <BackToTop />
         </div>
     );
 }

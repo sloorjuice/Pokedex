@@ -1,12 +1,9 @@
-# React + Vite
+# Pokedex Unlimited
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple website using the [PokeAPI](https://pokeapi.co/)
+Currently, the website is hosted here: https://pokedexunlimited.netlify.app/
 
-Currently, two official plugins are available:
+Credit to my [classmate](https://github.com/BigUserName1873) for lots and lots of help, as this was a group project.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+<img width="1680" alt="Screenshot 2025-03-26 at 9 43 03 PM" src="https://github.com/user-attachments/assets/0edabc23-a371-429b-9e65-7336f30a25ca" />
+<img width="1680" alt="Screenshot 2025-03-26 at 9 41 09 PM" src="https://github.com/user-attachments/assets/bfa00f71-4526-4c67-a93e-5a5e8c95886f" /> 

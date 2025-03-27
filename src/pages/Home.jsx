@@ -1,5 +1,5 @@
 import PokeCard from "../components/PokeCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getAllPokemonNames, searchPokemon, getRandomPokemonList } from "../services/api";
 import "../css/Home.css";
 import BackToTop from "../components/BackToTop";
@@ -9,14 +9,15 @@ function Home() {
     const [pokemons, setPokemon] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [allPokemonNames, setAllPokemonNames] = useState([]); // Store all Pokémon names
+    const [allPokemonNames, setAllPokemonNames] = useState([]);
+    const [isFetchingMore, setIsFetchingMore] = useState(false); // For endless scrolling
+    const observerRef = useRef(null);
 
     useEffect(() => {
         const loadRandomPokemon = async () => {
             try {
                 const randomPokemon = await getRandomPokemonList();
-                setPokemon([...pokemons, ...randomPokemon]); // Correctly update state
-                console.log(randomPokemon);
+                setPokemon((prev) => [...prev, ...randomPokemon]); // Append new Pokémon
             } catch (err) {
                 console.log(err);
                 setError("Failed to load Pokémon...");
@@ -28,7 +29,7 @@ function Home() {
         const fetchAllPokemonNames = async () => {
             try {
                 const names = await getAllPokemonNames();
-                setAllPokemonNames(names); // Store the full list of Pokémon names
+                setAllPokemonNames(names);
             } catch (err) {
                 console.log(err);
                 setError("Failed to fetch Pokémon names...");
@@ -41,7 +42,6 @@ function Home() {
 
     const handleSearch = async (query) => {
         if (!query.trim()) {
-            // If the search query is empty, reset to random Pokémon
             const randomPokemon = await getRandomPokemonList();
             setPokemon(randomPokemon);
             return;
@@ -49,12 +49,10 @@ function Home() {
 
         setLoading(true);
         try {
-            // Filter Pokémon names that start with the search query
             const filteredNames = allPokemonNames.filter((pokemon) =>
                 pokemon.name.toLowerCase().startsWith(query.toLowerCase())
             );
 
-            // Fetch details for the filtered Pokémon
             const searchResults = await Promise.all(
                 filteredNames.map((pokemon) => fetch(pokemon.url).then((res) => res.json()))
             );
@@ -72,8 +70,41 @@ function Home() {
     const handleInputChange = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
-        handleSearch(query); // Trigger search dynamically as the user types
+        handleSearch(query);
     };
+
+    // Load more Pokémon when the user scrolls to the bottom
+    const loadMorePokemon = async () => {
+        if (isFetchingMore) return; // Prevent duplicate fetches
+        setIsFetchingMore(true);
+        try {
+            const randomPokemon = await getRandomPokemonList();
+            setPokemon((prev) => [...prev, ...randomPokemon]); // Append new Pokémon
+        } catch (err) {
+            console.log(err);
+            setError("Failed to load more Pokémon...");
+        } finally {
+            setIsFetchingMore(false);
+        }
+    };
+
+    // Set up IntersectionObserver for endless scrolling
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    loadMorePokemon();
+                }
+            },
+            { threshold: 1.0 }
+        );
+
+        if (observerRef.current) {
+            observer.observe(observerRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <div className="home">
@@ -83,7 +114,7 @@ function Home() {
                     placeholder="Search for Pokémon..."
                     className="search-input"
                     value={searchQuery}
-                    onChange={handleInputChange} // Update feed dynamically
+                    onChange={handleInputChange}
                 />
             </form>
 
@@ -98,6 +129,12 @@ function Home() {
                     ))}
                 </div>
             )}
+
+            {isFetchingMore && <div className="loading">Loading more Pokémon...</div>}
+
+            {/* Hidden div to trigger endless scrolling */}
+            <div ref={observerRef} style={{ height: "1px" }}></div>
+
             <BackToTop />
         </div>
     );

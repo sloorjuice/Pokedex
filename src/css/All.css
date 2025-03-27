@@ -31,8 +31,31 @@
     border-radius: 8px;
     text-transform: capitalize;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-
 }
+
+.filter-sort-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.filter-dropdown,
+.sort-dropdown {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #000000;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.filter-dropdown:focus,
+.sort-dropdown:focus {
+    outline: none;
+    border-color: #666;
+}
+
 @media (max-width: 1024px) {
     .movies-grid {
         grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */

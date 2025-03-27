@@ -42,7 +42,7 @@
   .navbar-brand a:visited {
     color: white; /* Ensure links are white for both visited and unvisited states */
     text-decoration: none; /* Removes underline */
-    cursor: url('public/icon.png'), auto; /* Replace with your custom cursor image */
+    cursor: url('/icon.png'), auto; /* Use a root-relative path */
   }
 
   .navbar-links a:hover, .navbar-links a:active, .navbar-brand a:hover, .navbar-brand a:active {

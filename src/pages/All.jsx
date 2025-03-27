@@ -34,27 +34,27 @@ function AZ() {
         fetchTypes();
     }, []);
 
-    // Filter Pokémon by type
     useEffect(() => {
         let filtered = pokemonList;
 
+        // Filter Pokémon by type
         if (selectedType !== "all") {
             filtered = pokemonList.filter((pokemon) =>
                 pokemon.types.some((type) => type.type.name === selectedType)
             );
         }
 
-        // Sort the filtered Pokémon
+        // Correct sorting logic
         if (sortOption === "name") {
-            filtered.sort((a, b) => a.name.localeCompare(b.name));
+            filtered = [...filtered].sort((a, b) => a.name.localeCompare(b.name)); // Sort by name
         } else if (sortOption === "type") {
-            filtered.sort((a, b) => {
+            filtered = [...filtered].sort((a, b) => {
                 const typeA = a.types[0]?.type.name || "";
                 const typeB = b.types[0]?.type.name || "";
-                return typeA.localeCompare(typeB);
+                return typeA.localeCompare(typeB); // Sort by type
             });
         } else if (sortOption === "id") {
-            filtered.sort((a, b) => a.id - b.id);
+            filtered = [...filtered].sort((a, b) => a.id - b.id); // Sort by ID
         }
 
         setFilteredPokemon(filtered);

@@ -12,7 +12,7 @@ export const getRandomPokemon = async () => {
 
 export const getRandomPokemonList = async () => {
   let pokemon_list = [];
-  while (pokemon_list.length < 20) {
+  while (pokemon_list.length < 50) {
     const data = await getRandomPokemon();
 
     // Check if the Pokémon is already in the list

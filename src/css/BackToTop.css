@@ -1,7 +1,7 @@
 .back-to-top {
     position: fixed;
-    bottom: 1rem;
-    right: 1rem;
+    bottom: 1rem; /* Distance from the bottom of the screen */
+    left: 1rem; /* Distance from the left of the screen */
     background-color: #d23b43;
     color: white;
     border: none;

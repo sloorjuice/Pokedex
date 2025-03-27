@@ -2,6 +2,7 @@ import PokeCard from "../components/PokeCard";
 import { useState, useEffect } from "react";
 import { getAllPokemonNames, searchPokemon, getRandomPokemonList } from "../services/api";
 import "../css/Home.css";
+import BackToTop from "../components/BackToTop";
 
 function Home() {
     const [searchQuery, setSearchQuery] = useState("");
@@ -97,6 +98,7 @@ function Home() {
                     ))}
                 </div>
             )}
+            <BackToTop />
         </div>
     );
 }

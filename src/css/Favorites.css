@@ -1,5 +1,5 @@
 .favorites {
-    padding: 2rem;
+    padding: 2rem 0;
     width: 100%;
     box-sizing: border-box;
   }
@@ -33,6 +33,31 @@
     line-height: 1.6;
   }
   
+  .movies-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns */
+    gap: 1rem; /* Spacing between items */
+    padding: 1rem;
+    list-style: none;
+  }
+  
+  @media (max-width: 1024px) {
+    .movies-grid {
+      grid-template-columns: repeat(3, 1fr); /* 3 columns on medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .movies-grid {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns on small screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .movies-grid {
+      grid-template-columns: 1fr; /* 1 column on very small screens */
+    }
+  }
   
   /* Animation for new favorites being added */
   @keyframes fadeIn {

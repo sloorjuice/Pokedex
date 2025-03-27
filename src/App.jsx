@@ -1,26 +1,24 @@
 import './css/App.css';
 import Navbar from './components/Navbar';
 import Home from './pages/Home.jsx';
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Favorites from './pages/Favorites';
 import PokemonDetail from './pages/PokeDetail.jsx';
 import { PokeProvider } from './context/PokeContext';
 import All from "./pages/All.jsx";
 
 function App() {
-  return(
+  return (
     <PokeProvider>
-      <Navbar/>
+      <Navbar />
       <Routes>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/favorites' element={<Favorites/>}></Route>
-        <Route path='/all' element={<All />} /> 
-        <Route path='pokemon' element={<PokemonDetail />}>
-          <Route path=':pokemonID' element={<PokemonDetail/>}></Route>
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/all" element={<All />} />
+        <Route path="/pokemon/:pokeID" element={<PokemonDetail />} /> {/* Fix this route */}
       </Routes>
     </PokeProvider>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,12 +1,16 @@
-# Pokedex Unlimited
+# Pokédex Unlimited
 
-This is a simple website using the [PokeAPI](https://pokeapi.co/)
+This is a simple website using the [PokéAPI](https://pokeapi.co/)
 Currently, the website is hosted here: https://pokedexunlimited.netlify.app/
 
 ---
 
-## A website that allows you to randomly select games out of your steam library! 
-Just create an account and link your steam ID in your profile and press "Randomize Game" on the home screen.
+## An easy going Pokédex web app that lets you explore all Pokémon and their details.
+The home page uses dynamic scrolling to display pokémon randomly as you scroll.
+Search on the home page to find specific pokémon.
+Use the A-Z page to filter and sort through all the pokémon.
+Add your favorite pokémon to your favorites.
+No account needed.
 
 ---
 
@@ -15,6 +19,10 @@ Credit to my [classmate](https://github.com/BigUserName1873) for lots and lots o
 <details>
   <summary>Screenshots</summary>
 
-  <img width="840" alt="Screenshot 2025-03-26 at 9 43 03 PM" src="https://github.com/user-attachments/assets/0edabc23-a371-429b-9e65-7336f30a25ca" />
-  <img width="840" alt="Screenshot 2025-03-26 at 9 41 09 PM" src="https://github.com/user-attachments/assets/bfa00f71-4526-4c67-a93e-5a5e8c95886f" /> 
+  <img width="840" alt="Screenshot 2025-03-31 at 6 43 33 PM" src="https://github.com/user-attachments/assets/072ce949-3f2e-4b5e-b45a-bb484eeb416c" />
+  <img width="840" alt="Screenshot 2025-03-31 at 6 44 01 PM" src="https://github.com/user-attachments/assets/5ff93d57-6614-4d22-838f-0a3098df5620" />
+  <img width="840" alt="Screenshot 2025-03-31 at 6 44 27 PM" src="https://github.com/user-attachments/assets/24035dab-b91a-49b3-bb1a-6a3a119a9a9a" />
 </details>
+
+
+

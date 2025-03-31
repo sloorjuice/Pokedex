@@ -1,16 +1,16 @@
 # Pokédex Unlimited
 
-This is a simple website using the [PokéAPI](https://pokeapi.co/)
-Currently, the website is hosted here: https://pokedexunlimited.netlify.app/
+- This is a simple website using the [PokéAPI](https://pokeapi.co/)
+- Currently, the website is hosted here: https://pokedexunlimited.netlify.app/
 
 ---
 
 ## An easy going Pokédex web app that lets you explore all Pokémon and their details.
-The home page uses dynamic scrolling to display pokémon randomly as you scroll.
-Search on the home page to find specific pokémon.
-Use the A-Z page to filter and sort through all the pokémon.
-Add your favorite pokémon to your favorites.
-No account needed.
+- The home page uses dynamic scrolling to display pokémon randomly as you scroll.
+- Search on the home page to find specific pokémon.
+- Use the A-Z page to filter and sort through all the pokémon.
+- Add your favorite pokémon to your favorites.
+- No account needed.
 
 ---
 
